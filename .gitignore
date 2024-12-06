@@ -22,11 +22,6 @@ yarn-error.log*
 .vscode/
 .idea/
 
-# Arquivos de ambiente (não versionar variáveis sensíveis)
-.env
-.env.local
-.env.*.local
-
 # Arquivos gerados pelo OS
 .DS_Store
 Thumbs.db
