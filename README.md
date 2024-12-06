@@ -24,10 +24,10 @@ Este é um projeto de back-end em **Node.js** utilizando **Express** e **Sequeli
    git clone https://github.com/Tailany24/drip_store_back.git
    cd projeto-backend
    
-2. **Rodar o Servidor**
+2. **Instale as dependências**
+   ```bash
+   npm install
+
+3. **Rodar o Servidor**
    ```bash
    node src/server.js
-   
-4. **Instale as dependências**
-  ```bash 
-    npm install
