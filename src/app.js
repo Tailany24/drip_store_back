@@ -1,16 +1,17 @@
 const express = require('express');
-const usuarioRoutes = require('./routes/usuarioRoute');
-const categoriaRoutes = require('./routes/categoriaRoute');
-const produtosRoutes = require('./routes/produtosRoute');
-const loginRoutes = require('./routes/loginRoute');
-
 const app = express();
+const usuarioRoutes = require('./routes/usuarioRoute');
+const produtoRoutes = require('./routes/produtosRoute');
+
+// Middleware para parsear JSON
 app.use(express.json());
 
-// Rotas
-app.use('/api/usuarios', usuarioRoutes);
-app.use('/api/categorias', categoriaRoutes);
-app.use('/api/produtos', produtosRoutes);
-app.use('/api/login', loginRoutes);
+// Usando as rotas
+app.use('/usuarios', usuarioRoutes);
+app.use('/produtos', produtoRoutes);
 
-module.exports = app;
+// Inicializando o servidor
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`Servidor rodando na porta ${PORT}`);
+});

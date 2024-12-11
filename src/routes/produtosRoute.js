@@ -1,12 +1,12 @@
-//produtosRoute.js
 const express = require('express');
 const router = express.Router();
 const produtoController = require('../controllers/controllerProduto');
 
-// Rota para obter todos os produtos
-router.get('/', produtoController.getProdutos);
-
-// Rota para criar um novo produto
-router.post('/', produtoController.createProduto);
+// Rotas para produtos
+router.get('/lista', produtoController.getProdutos);
+router.get('/:id', produtoController.getProdutoById);
+router.post('/criar', produtoController.createProduto);
+router.put('/atualizar/:id', produtoController.updateProduto);
+router.delete('/excluir/:id', produtoController.deleteProduto);
 
 module.exports = router;

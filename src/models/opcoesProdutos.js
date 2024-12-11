@@ -1,6 +1,6 @@
 //opcoesProdutos.js
 const { DataTypes } = require('sequelize');
-const sequelize = require('../config/database'); // Ajuste o caminho conforme necessário
+const sequelize = require('../config/database'); 
 
 const OpcaoProduto = sequelize.define('OpcaoProduto', {
   nome: {
@@ -19,6 +19,10 @@ const OpcaoProduto = sequelize.define('OpcaoProduto', {
       key: 'id',
     },
   },
+},
+{
+  timestamps: false, // Adiciona automaticamente createdAt e updatedAt
 });
 
 module.exports = OpcaoProduto;
+

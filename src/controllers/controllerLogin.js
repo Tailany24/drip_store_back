@@ -1,4 +1,4 @@
-//controllerLogin.js
+// controllerLogin.js
 const Usuario = require('../models/tabelaUsuarios');
 const bcrypt = require('bcrypt');
 

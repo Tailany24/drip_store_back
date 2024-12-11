@@ -1,11 +1,11 @@
 const { Sequelize } = require('sequelize');
 
 const sequelize = new Sequelize(
-    process.env.DB_NAME || // Nome do banco
-    process.env.DB_USER || // Usuário do banco
-    process.env.DB_PASSWORD ||  // Senha do banco
+    process.env.DB_NAME || 'sql10750052', // Nome do banco
+    process.env.DB_USER || 'sql10750052',      // Usuário do banco
+    process.env.DB_PASSWORD || '7sBa8DHMv2', // Senha do banco
     {
-        host: process.env.DB_HOST || 'Host',
+        host: process.env.DB_HOST || 'sql10.freesqldatabase.com',
         dialect: 'mysql',
         port: process.env.DB_PORT || 3306,
         logging: false, // Opcional: Desabilitar logs do Sequelize no console
@@ -13,4 +13,5 @@ const sequelize = new Sequelize(
 );
 
 module.exports = sequelize;
+
 

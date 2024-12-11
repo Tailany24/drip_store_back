@@ -1,6 +1,7 @@
 //imagensProduto.js
 const { DataTypes } = require('sequelize');
-const sequelize = require('../config/database'); // Ajuste o caminho conforme necessário
+const sequelize = require('../config/database'); 
+
 
 const ImagemProduto = sequelize.define('ImagemProduto', {
   url: {
@@ -19,6 +20,9 @@ const ImagemProduto = sequelize.define('ImagemProduto', {
       key: 'id',
     },
   },
+},
+{
+  timestamps: false, // Adiciona automaticamente createdAt e updatedAt
 });
 
 module.exports = ImagemProduto;

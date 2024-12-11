@@ -1,6 +1,6 @@
 //tabelaCategoria.js
 const { DataTypes } = require('sequelize');
-const sequelize = require('../config/database'); // Ajuste o caminho conforme necessário
+const sequelize = require('../config/database'); 
 
 const Categoria = sequelize.define('Categoria', {
   nome: {
@@ -14,3 +14,4 @@ const Categoria = sequelize.define('Categoria', {
 });
 
 module.exports = Categoria;
+

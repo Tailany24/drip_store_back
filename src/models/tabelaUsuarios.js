@@ -1,21 +1,21 @@
-//tabelaUsuarios.js
+//tabelaUsuarios
 const { DataTypes } = require('sequelize');
-const sequelize = require('../config/database'); // Caminho correto para o arquivo de configuração do banco
+const sequelize = require('../config/database');
 
 const Usuario = sequelize.define('Usuario', {
-    username: {
-        type: DataTypes.STRING,
-        allowNull: false,
-    },
-    email: {
-        type: DataTypes.STRING,
-        allowNull: false,
-        unique: true,
-    },
-    senha: {
-        type: DataTypes.STRING,
-        allowNull: false,
-    },
+  name: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
+  email: {
+    type: DataTypes.STRING,
+    allowNull: false,
+    unique: true,
+  },
+  senha: {
+    type: DataTypes.STRING, // A senha criptografada será uma string longa
+    allowNull: false,
+  },
 });
 
 module.exports = Usuario;

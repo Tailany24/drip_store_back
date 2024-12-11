@@ -1,7 +1,9 @@
 //tabelaProdutos.js
 const { DataTypes } = require('sequelize');
-const sequelize = require('../config/database'); // Ajuste o caminho conforme necessário
-const Categoria = require('./tabelaCategoria'); // Relacionamento com a tabela Categoria
+const sequelize = require('../config/database'); 
+const Categoria = require('./tabelaCategoria');
+const ImagemProduto = require('./imagensProduto');
+const OpcaoProduto = require('./opcoesProdutos');
 
 const Produto = sequelize.define('Produto', {
   nome: {
@@ -24,6 +26,28 @@ const Produto = sequelize.define('Produto', {
       key: 'id',
     },
   },
+}, {
+  timestamps: false, // Garante que os campos createdAt e updatedAt sejam gerenciados automaticamente
+});
+
+// Relacionamento entre Produto e ImagemProduto (1:N)
+Produto.hasMany(ImagemProduto, {
+  foreignKey: 'produtoId',
+  as: 'imagens', // Nome do campo para associações
+});
+ImagemProduto.belongsTo(Produto, {
+  foreignKey: 'produtoId',
+  as: 'produto',
+});
+
+// Relacionamento entre Produto e OpcaoProduto (1:N)
+Produto.hasMany(OpcaoProduto, {
+  foreignKey: 'produtoId',
+  as: 'opcoes', // Nome do campo para associações
+});
+OpcaoProduto.belongsTo(Produto, {
+  foreignKey: 'produtoId',
+  as: 'produto',
 });
 
 module.exports = Produto;

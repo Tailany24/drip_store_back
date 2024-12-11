@@ -1,38 +1,60 @@
 //controllerProduto.js
-const Produto = require('../models/tabelaProdutos');
+const produtoService = require('../services/serviceProdutos');
 
-// Função para obter todos os produtos
 const getProdutos = async (req, res) => {
   try {
-    const produtos = await Produto.findAll();
+    const produtos = await produtoService.getAllProdutos();
     res.status(200).json(produtos);
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
 };
 
-// Função para criar um novo produto
-const createProduto = async (req, res) => {
-  const { name, slug, price, price_with_discount, description, stock, enabled } = req.body;
-
+const getProdutoById = async (req, res) => {
+  const { id } = req.params;
   try {
-    const produto = await Produto.create({
-      name,
-      slug,
-      price,
-      price_with_discount,
-      description,
-      stock,
-      enabled,
-    });
+    const produto = await produtoService.getProdutoById(id);
+    res.status(200).json(produto);
+  } catch (err) {
+    res.status(404).json({ error: err.message });
+  }
+};
+
+const createProduto = async (req, res) => {
+  const produtoData = req.body;
+  try {
+    const produto = await produtoService.createProduto(produtoData);
     res.status(201).json(produto);
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
 };
 
-// Exportando as funções
+const updateProduto = async (req, res) => {
+  const { id } = req.params;
+  const produtoData = req.body;
+  try {
+    const produto = await produtoService.updateProduto(id, produtoData);
+    res.status(200).json(produto);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+};
+
+const deleteProduto = async (req, res) => {
+  const { id } = req.params;
+  try {
+    const message = await produtoService.deleteProduto(id);
+    res.status(200).json(message);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+};
+
 module.exports = {
   getProdutos,
+  getProdutoById,
   createProduto,
+  updateProduto,
+  deleteProduto,
 };

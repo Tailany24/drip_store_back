@@ -1,11 +1,9 @@
 //serviceLogin.js
-const Usuario = require('../models/tabelaUsuarios');
-const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
+const SECRET_KEY = process.env.JWT_SECRET || 'default_secret_key';
 
-// Função para autenticar o login do usuário
 const login = async (email, senha) => {
   const usuario = await Usuario.findOne({ where: { email } });
-
   if (!usuario) {
     throw new Error('Usuário não encontrado.');
   }
@@ -15,9 +13,14 @@ const login = async (email, senha) => {
     throw new Error('Senha inválida.');
   }
 
-  return usuario;
+  // Gerar um token JWT
+  const token = jwt.sign(
+    { id: usuario.id, email: usuario.email, name: usuario.name },
+    SECRET_KEY,
+    { expiresIn: '1h' }
+  );
+
+  return { usuario, token };
 };
 
-module.exports = {
-  login,
-};
+module.exports = { login };

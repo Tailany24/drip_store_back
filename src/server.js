@@ -1,16 +1,24 @@
-const { Sequelize } = require('sequelize');
+// server.js
+const express = require('express');
+const app = express();
 
-const sequelize = new Sequelize(
-    process.env.DB_NAME || 'sql10750052',
-    process.env.DB_USER || 'sql10750052',      
-    process.env.DB_PASSWORD || '7sBa8DHMv2', 
-    {
-        host: process.env.DB_HOST || 'sql10.freesqldatabase.com',
-        dialect: 'mysql',
-        port: process.env.DB_PORT || 3306,
-        logging: false, // Opcional: Desabilitar logs do Sequelize no console
-    }
-);
+const usuarioRoutes = require('./routes/usuarioRoute'); // Importando rotas de usuários
+const loginRoutes = require('./routes/loginRoute'); // Importando rotas de login
+const categoriaRoutes = require('./routes/categoriaRoute'); // Importando rotas de categorias
+const produtoRoutes = require('./routes/produtosRoute'); // Importando rotas de produtos
 
-module.exports = sequelize;
+// Middleware para parsear JSON
+app.use(express.json());
+
+// Usando as rotas
+app.use('/usuario', usuarioRoutes);  // Rota para usuários
+app.use('/usuario', loginRoutes);  // Rota para login
+app.use('/categoria', categoriaRoutes); // Rotas para categorias
+app.use('/produto', produtoRoutes); // Rotas para produtos
+
+// Inicializando o servidor
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`Servidor rodando na porta ${PORT}`);
+});
 
