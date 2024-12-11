@@ -54,7 +54,7 @@ https://drip-store-back.onrender.com/
 #### **Cadastrar Usuário**
 OBS: A senha de usuario será salvo no Banco de Dados de forma criptografada para maior segurança.
 ##
-![Captura de tela 2024-12-11 152727](https://github.com/user-attachments/assets/e7167c4d-702f-46d9-b3a4-30398a1b01e8)
+![banco de dados](https://github.com/user-attachments/assets/e7167c4d-702f-46d9-b3a4-30398a1b01e8)
 
 
 ##
